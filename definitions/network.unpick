@@ -37,8 +37,8 @@ target_method net.minecraft.nbt.NbtAccounter create (J)Lnet/minecraft/nbt/NbtAcc
 	param 0 max_nbt_size
 
 group int
-	@scope class net.minecraft.network.FriendlyByteBuf
-	net.minecraft.network.FriendlyByteBuf.MAX_PUBLIC_KEY_LENGTH
+	@scope class net.minecraft.network.codec.ByteBufCodecs
+	net.minecraft.network.codec.ByteBufCodecs.MAX_PUBLIC_KEY_LENGTH
 
 group int
 	@scope class net.minecraft.world.entity.player.ProfilePublicKey$Data
