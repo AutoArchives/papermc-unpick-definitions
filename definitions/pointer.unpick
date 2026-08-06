@@ -9,25 +9,19 @@ target_method org.lwjgl.system.MemoryUtil memAddress (Ljava/nio/ByteBuffer;)J
 target_method org.lwjgl.PointerBuffer get ()J
 	return pointer
 
-target_method org.lwjgl.glfw.GLFW glfwGetPrimaryMonitor ()J
-	return pointer
-target_method org.lwjgl.glfw.GLFW glfwGetMonitorPos (JLjava/nio/IntBuffer;Ljava/nio/IntBuffer;)V
-	param 0 pointer
-target_method org.lwjgl.glfw.GLFW glfwGetMonitorWorkarea (JLjava/nio/IntBuffer;Ljava/nio/IntBuffer;Ljava/nio/IntBuffer;Ljava/nio/IntBuffer;)V
-	param 0 pointer
-target_method org.lwjgl.glfw.GLFW glfwGetMonitorPhysicalSize (JLjava/nio/IntBuffer;Ljava/nio/IntBuffer;)V
-	param 0 pointer
-target_method org.lwjgl.glfw.GLFW glfwGetCurrentContext ()J
-	return pointer
-target_method org.lwjgl.glfw.GLFW glfwGetWindowMonitor(J)J
-	return pointer
-target_method org.lwjgl.glfw.GLFW glfwSetWindowMonitor(JJIIIII)V
+target_method org.lwjgl.sdl.SDLLog SDL_SetLogOutputFunction (Lorg/lwjgl/sdl/SDL_LogOutputFunctionI;J)V
 	param 1 pointer
-target_method org.lwjgl.glfw.GLFW glfwCreateStandardCursor(I)J
+
+target_method org.lwjgl.sdl.SDLVideo SDL_CreateWindow (Ljava/lang/CharSequence;IIJ)J
 	return pointer
-target_method org.lwjgl.glfw.GLFW glfwCreateWindow (IILjava/lang/CharSequence;JJ)J
-	param 4 pointer
+target_method org.lwjgl.sdl.SDLVideo SDL_GL_CreateContext (J)J
 	return pointer
+
+target_method org.lwjgl.util.spvc.Spvc spvc_context_destroy (J)V
+	param 0 pointer
+
+target_method com.mojang.blaze3d.platform.SdlDebug onLogMessage (JIIJ)V
+	param 3 pointer
 
 target_method org.lwjgl.openal.ALC10 alcOpenDevice (Ljava/lang/CharSequence;)J
 	return pointer
@@ -35,11 +29,38 @@ target_method org.lwjgl.openal.ALC10 alcOpenDevice (Ljava/lang/CharSequence;)J
 target_method org.lwjgl.stb.STBImageWrite nstbi_write_png_to_func (JJIIIJI)I
 	param 1 pointer
 
+target_method com.mojang.renderpearl.backend.opengl.GlTransientMemory$PersistentMapping$GlAllocation <init> (IJJ)V
+	param 1 pointer
+
+target_method com.mojang.renderpearl.backend.vulkan.init.VulkanPNextStruct findStructInPNextChain (J)J
+	return pointer
+target_method com.mojang.renderpearl.backend.vulkan.init.VulkanPNextStruct findStructInPNextChain (JI)J
+	param 0 pointer
+	return pointer
+
+target_field com.mojang.blaze3d.platform.cursor.CursorType handle J pointer
 target_method com.mojang.blaze3d.platform.cursor.CursorType <init> (Ljava/lang/String;J)V
 	param 1 pointer
 
+target_method net.minecraft.client.KeyboardHandler keyPress (JILnet/minecraft/client/input/KeyEvent;)V
+	param 0 pointer
+target_method net.minecraft.client.KeyboardHandler charTyped (JLnet/minecraft/client/input/CharacterEvent;)V
+	param 0 pointer
+target_method net.minecraft.client.KeyboardHandler textEditing (JLnet/minecraft/client/input/PreeditEvent;)V
+	param 0 pointer
+target_method net.minecraft.client.KeyboardHandler textEditingCandidates (JLnet/minecraft/client/input/IMECandidatesEvent;)V
+	param 0 pointer
+
+target_method net.minecraft.client.MouseHandler onButton (JLnet/minecraft/client/input/MouseButtonInfo;I)V
+	param 0 pointer
+target_method net.minecraft.client.MouseHandler onScroll (JDD)V
+	param 0 pointer
+target_method net.minecraft.client.MouseHandler onMove (JDDDD)V
+	param 0 pointer
+
 target_field com.mojang.blaze3d.audio.Library currentDevice J pointer
-target_field com.mojang.blaze3d.opengl.GlFence handle J pointer
 target_field com.mojang.blaze3d.platform.NativeImage pixels J pointer
 target_field com.mojang.blaze3d.vertex.ByteBufferBuilder pointer J pointer
+target_field com.mojang.renderpearl.backend.util.TransientBlockAllocator$Allocator$CpuBlock address J pointer
+target_field com.mojang.renderpearl.frontend.shaders.SPIRVModule spvcContext J pointer
 target_field net.minecraft.client.gui.font.providers.FreeTypeUtil library J pointer

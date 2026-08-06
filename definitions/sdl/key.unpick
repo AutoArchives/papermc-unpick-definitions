@@ -1,7 +1,7 @@
 unpick v4
 
-group int key
-	org.lwjgl.glfw.GLFW.GLFW_KEY_UNKNOWN
+group int key # scan_code
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_UNKNOWN
 	com.mojang.blaze3d.platform.InputConstants.KEY_0
 	com.mojang.blaze3d.platform.InputConstants.KEY_1
 	com.mojang.blaze3d.platform.InputConstants.KEY_2
@@ -62,7 +62,6 @@ group int key
 	com.mojang.blaze3d.platform.InputConstants.KEY_F22
 	com.mojang.blaze3d.platform.InputConstants.KEY_F23
 	com.mojang.blaze3d.platform.InputConstants.KEY_F24
-	com.mojang.blaze3d.platform.InputConstants.KEY_F25
 	com.mojang.blaze3d.platform.InputConstants.KEY_NUMLOCK
 	com.mojang.blaze3d.platform.InputConstants.KEY_NUMPAD0
 	com.mojang.blaze3d.platform.InputConstants.KEY_NUMPAD1
@@ -75,12 +74,17 @@ group int key
 	com.mojang.blaze3d.platform.InputConstants.KEY_NUMPAD8
 	com.mojang.blaze3d.platform.InputConstants.KEY_NUMPAD9
 	com.mojang.blaze3d.platform.InputConstants.KEY_ADD
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_KP_PERIOD
 	com.mojang.blaze3d.platform.InputConstants.KEY_NUMPADCOMMA
 	com.mojang.blaze3d.platform.InputConstants.KEY_NUMPADENTER
 	com.mojang.blaze3d.platform.InputConstants.KEY_NUMPADEQUALS
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_KP_COMMA
 	com.mojang.blaze3d.platform.InputConstants.KEY_MULTIPLY
-	org.lwjgl.glfw.GLFW.GLFW_KEY_KP_DIVIDE
-	org.lwjgl.glfw.GLFW.GLFW_KEY_KP_SUBTRACT
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_KP_DIVIDE
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_KP_MINUS
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_KP_PLUSMINUS
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_KP_LEFTPAREN
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_KP_RIGHTPAREN
 	com.mojang.blaze3d.platform.InputConstants.KEY_DOWN
 	com.mojang.blaze3d.platform.InputConstants.KEY_LEFT
 	com.mojang.blaze3d.platform.InputConstants.KEY_RIGHT
@@ -101,11 +105,11 @@ group int key
 	com.mojang.blaze3d.platform.InputConstants.KEY_LALT
 	com.mojang.blaze3d.platform.InputConstants.KEY_LCONTROL
 	com.mojang.blaze3d.platform.InputConstants.KEY_LSHIFT
-	com.mojang.blaze3d.platform.InputConstants.KEY_LSUPER
+	com.mojang.blaze3d.platform.InputConstants.KEY_LGUI
 	com.mojang.blaze3d.platform.InputConstants.KEY_RALT
 	com.mojang.blaze3d.platform.InputConstants.KEY_RCONTROL
 	com.mojang.blaze3d.platform.InputConstants.KEY_RSHIFT
-	com.mojang.blaze3d.platform.InputConstants.KEY_RSUPER
+	com.mojang.blaze3d.platform.InputConstants.KEY_RGUI
 	com.mojang.blaze3d.platform.InputConstants.KEY_RETURN
 	com.mojang.blaze3d.platform.InputConstants.KEY_ESCAPE
 	com.mojang.blaze3d.platform.InputConstants.KEY_BACKSPACE
@@ -118,21 +122,67 @@ group int key
 	com.mojang.blaze3d.platform.InputConstants.KEY_CAPSLOCK
 	com.mojang.blaze3d.platform.InputConstants.KEY_PAUSE
 	com.mojang.blaze3d.platform.InputConstants.KEY_SCROLLLOCK
-	org.lwjgl.glfw.GLFW.GLFW_KEY_MENU
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_APPLICATION
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_MENU
 	com.mojang.blaze3d.platform.InputConstants.KEY_PRINTSCREEN
-	org.lwjgl.glfw.GLFW.GLFW_KEY_WORLD_1
-	org.lwjgl.glfw.GLFW.GLFW_KEY_WORLD_2
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_NONUSBACKSLASH
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_NONUSHASH
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_MUTE
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_VOLUMEUP
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_VOLUMEDOWN
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_MEDIA_PLAY_PAUSE
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_STOP
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_AGAIN
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_UNDO
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_CUT
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_COPY
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_PASTE
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_FIND
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_HELP
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_AC_NEW
+	org.lwjgl.sdl.SDLScancode.SDL_SCANCODE_AC_SAVE
 
-target_method com.mojang.blaze3d.platform.InputConstants isKeyDown (Lcom/mojang/blaze3d/platform/Window;I)Z
-	param 1 key
+group int key_code
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_A
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_B
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_C
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_E
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_F
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_L
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_O
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_R
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_U
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_V
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_W
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_X
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_Y
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_Z
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_RETURN
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_NUMPADENTER
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_PAGEUP
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_PAGEDOWN
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_BACKSPACE
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_UP # KEYCODE_FORWARD
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_DOWN # KEYCODE_BACKWARD
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_LEFT
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_RIGHT
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_NUMPAD9
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_NUMPAD3
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_DELETE
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_HOME
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_END
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_F5
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_TAB
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_LCONTROL
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_RCONTROL
+	com.mojang.blaze3d.platform.InputConstants.KEYCODE_SPACE
+
+target_annotation com.mojang.blaze3d.platform.InputConstants$Value key
+
+target_method com.mojang.blaze3d.platform.InputConstants isKeyDown (I)Z
+	param 0 key
 
 target_method net.minecraft.client.input.KeyEvent <init> (III)V
-	param 0 key
-target_method net.minecraft.client.input.KeyEvent key ()I
-	return key
-
-target_method org.lwjgl.glfw.GLFW glfwGetKeyName (II)Ljava/lang/String;
-	param 0 key
-
-target_method org.lwjgl.glfw.GLFW glfwGetKey (JI)I
-	param 0 key
+	param 1 key_code
+target_method net.minecraft.client.input.KeyEvent shortcutKey ()I
+	return key_code
