@@ -73,11 +73,6 @@ target_method net.minecraft.server.commands.FetchProfileCommand printForEntity (
 target_method net.minecraft.server.commands.ForceLoadCommand queryForceLoad (Lnet/minecraft/commands/CommandSourceStack;Lnet/minecraft/server/level/ColumnPos;)I
 	return command_result
 
-target_method net.minecraft.server.commands.ItemCommands modifyBlockItem (Lnet/minecraft/commands/CommandSourceStack;Lnet/minecraft/core/BlockPos;ILnet/minecraft/core/Holder;)I
-	return command_result
-target_method net.minecraft.server.commands.ItemCommands setBlockItem (Lnet/minecraft/commands/CommandSourceStack;Lnet/minecraft/core/BlockPos;ILnet/minecraft/world/item/ItemStack;)I
-	return command_result
-
 target_method net.minecraft.server.commands.JfrCommand startJfr (Lnet/minecraft/commands/CommandSourceStack;)I
 	return command_result
 target_method net.minecraft.server.commands.JfrCommand stopJfr (Lnet/minecraft/commands/CommandSourceStack;)I
@@ -86,7 +81,7 @@ target_method net.minecraft.server.commands.JfrCommand stopJfr (Lnet/minecraft/c
 target_method net.minecraft.server.commands.PardonIpCommand unban (Lnet/minecraft/commands/CommandSourceStack;Ljava/lang/String;)I
 	return command_result
 
-target_method net.minecraft.server.commands.PlaceCommand placeFeature (Lnet/minecraft/commands/CommandSourceStack;Lnet/minecraft/core/Holder$Reference;Lnet/minecraft/core/BlockPos;)I
+target_method net.minecraft.server.commands.PlaceCommand placeFeature (Lnet/minecraft/commands/CommandSourceStack;Lnet/minecraft/core/Holder;Lnet/minecraft/core/BlockPos;)I
 	return command_result
 target_method net.minecraft.server.commands.PlaceCommand placeJigsaw (Lnet/minecraft/commands/CommandSourceStack;Lnet/minecraft/core/Holder;Lnet/minecraft/resources/Identifier;ILnet/minecraft/core/BlockPos;)I
 	return command_result
@@ -167,6 +162,9 @@ target_method net.minecraft.server.commands.TickCommand stopSprinting (Lnet/mine
 target_method net.minecraft.server.commands.TimeCommand setPaused (Lnet/minecraft/commands/CommandSourceStack;Lnet/minecraft/core/Holder;Z)I
 	return command_result
 target_method net.minecraft.server.commands.TimeCommand setRate (Lnet/minecraft/commands/CommandSourceStack;Lnet/minecraft/core/Holder;F)I
+	return command_result
+
+target_method net.minecraft.server.commands.UnpublishCommand unpublish (Lnet/minecraft/commands/CommandSourceStack;)I
 	return command_result
 
 target_method net.minecraft.server.commands.WhitelistCommand reload (Lnet/minecraft/commands/CommandSourceStack;)I

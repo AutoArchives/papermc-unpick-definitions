@@ -37,14 +37,6 @@ target_method net.minecraft.nbt.NbtAccounter create (J)Lnet/minecraft/nbt/NbtAcc
 	param 0 max_nbt_size
 
 group int
-	@scope class net.minecraft.network.FriendlyByteBuf
-	net.minecraft.network.FriendlyByteBuf.MAX_PUBLIC_KEY_LENGTH
-
-group int
-	@scope class net.minecraft.world.entity.player.ProfilePublicKey$Data
-	net.minecraft.world.entity.player.ProfilePublicKey$Data.MAX_KEY_SIGNATURE_SIZE
-
-group int
 	@scope class net.minecraft.network.protocol.game.ClientboundChunksBiomesPacket$ChunkBiomeData
 	net.minecraft.network.protocol.game.ClientboundChunksBiomesPacket.TWO_MEGABYTES
 
@@ -52,23 +44,17 @@ group int
 	@scope class net.minecraft.network.protocol.game.ClientboundLevelChunkPacketData
 	net.minecraft.network.protocol.game.ClientboundLevelChunkPacketData.TWO_MEGABYTES
 
-group int
-	@scope class com.mojang.blaze3d.vertex.ByteBufferBuilder
-	com.mojang.blaze3d.vertex.ByteBufferBuilder.MAX_GROWTH_SIZE
-	com.mojang.blaze3d.vertex.ByteBufferBuilder.BUFFER_FREED_GENERATION
-group long
-	@scope class com.mojang.blaze3d.vertex.ByteBufferBuilder
-	com.mojang.blaze3d.vertex.ByteBufferBuilder.DEFAULT_MAX_CAPACITY
-
 group int move_player_flags
 	@flags
 	net.minecraft.network.protocol.game.ServerboundMovePlayerPacket.FLAG_ON_GROUND
 	net.minecraft.network.protocol.game.ServerboundMovePlayerPacket.FLAG_HORIZONTAL_COLLISION
 
+group int move_entity_flags
+	@flags
+	net.minecraft.network.protocol.game.ClientboundMoveEntityPacket.ON_GROUND_FLAG
+
 group int animation_action
-	net.minecraft.network.protocol.game.ClientboundAnimatePacket.SWING_MAIN_HAND
 	net.minecraft.network.protocol.game.ClientboundAnimatePacket.WAKE_UP
-	net.minecraft.network.protocol.game.ClientboundAnimatePacket.SWING_OFF_HAND
 	net.minecraft.network.protocol.game.ClientboundAnimatePacket.CRITICAL_HIT
 	net.minecraft.network.protocol.game.ClientboundAnimatePacket.MAGIC_CRITICAL_HIT
 
@@ -134,20 +120,17 @@ group int mob_effect_flags
 	net.minecraft.network.protocol.game.ClientboundUpdateMobEffectPacket.FLAG_SHOW_ICON
 	net.minecraft.network.protocol.game.ClientboundUpdateMobEffectPacket.FLAG_BLEND
 
-group String handler_name
-	net.minecraft.network.HandlerNames.*
-
-group int client_intent
-	net.minecraft.network.protocol.handshake.ClientIntent.STATUS_ID
-	net.minecraft.network.protocol.handshake.ClientIntent.LOGIN_ID
-	net.minecraft.network.protocol.handshake.ClientIntent.TRANSFER_ID
-
 target_method net.minecraft.network.protocol.game.ServerboundMovePlayerPacket packFlags (ZZ)I
 	return move_player_flags
 target_method net.minecraft.network.protocol.game.ServerboundMovePlayerPacket unpackOnGround (I)Z
 	param 0 move_player_flags
 target_method net.minecraft.network.protocol.game.ServerboundMovePlayerPacket unpackHorizontalCollision (I)Z
 	param 0 move_player_flags
+
+target_method net.minecraft.network.protocol.game.ClientboundMoveEntityPacket unpackOnGround (I)Z
+	param 0 move_entity_flags
+target_method net.minecraft.network.protocol.game.ClientboundMoveEntityPacket packProperties (ZI)I
+	return move_entity_flags
 
 target_method net.minecraft.network.protocol.game.ClientboundAnimatePacket <init> (Lnet/minecraft/world/entity/Entity;I)V
 	param 1 animation_action
@@ -192,6 +175,14 @@ target_method net.minecraft.network.protocol.game.ClientboundRecipeBookAddPacket
 	param 1 book_addition_flags
 
 target_field net.minecraft.network.protocol.game.ClientboundUpdateMobEffectPacket flags B mob_effect_flags
+
+group String handler_name
+	net.minecraft.network.HandlerNames.*
+
+group int client_intent
+	net.minecraft.network.protocol.handshake.ClientIntent.STATUS_ID
+	net.minecraft.network.protocol.handshake.ClientIntent.LOGIN_ID
+	net.minecraft.network.protocol.handshake.ClientIntent.TRANSFER_ID
 
 target_method net.minecraft.network.Connection outboundHandlerName (Z)Ljava/lang/String;
 	return handler_name

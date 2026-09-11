@@ -47,13 +47,6 @@ group int argb_color
 	net.minecraft.client.gui.components.IMEPreeditOverlay.TEXT_COLOR
 
 group int argb_color
-	@scope class net.minecraft.client.renderer.fog.environment.LavaFogEnvironment
-	net.minecraft.client.renderer.fog.environment.LavaFogEnvironment.COLOR
-group int argb_color
-	@scope class net.minecraft.client.renderer.fog.environment.PowderedSnowFogEnvironment
-	net.minecraft.client.renderer.fog.environment.PowderedSnowFogEnvironment.COLOR
-
-group int argb_color
 	@scope class net.minecraft.client.renderer.debug.BeeDebugRenderer
 	net.minecraft.client.renderer.debug.BeeDebugRenderer.ORANGE
 	net.minecraft.client.renderer.debug.BeeDebugRenderer.GRAY
@@ -83,17 +76,12 @@ group int argb_color
 	net.minecraft.client.renderer.state.gui.GuiRenderState.DEBUG_RECTANGLE_COLOR
 
 group int argb_color
+	@scope class net.minecraft.world.timeline.Timelines
+	net.minecraft.world.timeline.Timelines.NIGHT_SKY_COLOR_MULTIPLIER
+
+group int argb_color
 	@scope class net.minecraft.world.entity.projectile.arrow.Arrow
 	net.minecraft.world.entity.projectile.arrow.Arrow.NO_EFFECT_COLOR
-
-group int argb_color
-	@scope class net.minecraft.world.level.saveddata.maps.MapDecorationType
-	@scope class net.minecraft.world.level.saveddata.maps.MapDecorationTypes
-	net.minecraft.world.level.saveddata.maps.MapDecorationType.NO_MAP_COLOR
-
-group int argb_color
-	@scope class net.minecraft.world.level.saveddata.maps.MapDecorationTypes
-	net.minecraft.world.level.saveddata.maps.MapDecorationTypes.COPPER_COLOR
 
 group int rgb_color
 	@scope class net.minecraft.client.multiplayer.chat.GuiMessageTag
@@ -130,7 +118,7 @@ target_method net.minecraft.client.gui.GuiGraphicsExtractor verticalLine (IIII)V
 	param 3 argb_color
 target_method net.minecraft.client.gui.GuiGraphicsExtractor fill (IIIII)V
 	param 4 argb_color
-target_method net.minecraft.client.gui.GuiGraphicsExtractor fill (Lcom/mojang/blaze3d/pipeline/RenderPipeline;IIIII)V
+target_method net.minecraft.client.gui.GuiGraphicsExtractor fill (Lcom/mojang/renderpearl/api/pipeline/RenderPipeline;IIIII)V
 	param 5 argb_color
 target_method net.minecraft.client.gui.GuiGraphicsExtractor text (Lnet/minecraft/client/gui/Font;Ljava/lang/String;III)V
 	param 4 argb_color
@@ -150,9 +138,9 @@ target_method net.minecraft.client.gui.GuiGraphicsExtractor centeredText (Lnet/m
 	param 4 argb_color
 target_method net.minecraft.client.gui.GuiGraphicsExtractor centeredText (Lnet/minecraft/client/gui/Font;Lnet/minecraft/util/FormattedCharSequence;III)V
 	param 4 argb_color
-target_method net.minecraft.client.gui.GuiGraphicsExtractor textWithWordWrap (Lnet/minecraft/client/gui/Font;Lnet/minecraft/network/chat/FormattedText;IIII)V
+target_method net.minecraft.client.gui.GuiGraphicsExtractor textWithWordWrap (Lnet/minecraft/client/gui/Font;Lnet/minecraft/network/chat/FormattedText;IIII)I
 	param 5 argb_color
-target_method net.minecraft.client.gui.GuiGraphicsExtractor textWithWordWrap (Lnet/minecraft/client/gui/Font;Lnet/minecraft/network/chat/FormattedText;IIIIZ)V
+target_method net.minecraft.client.gui.GuiGraphicsExtractor textWithWordWrap (Lnet/minecraft/client/gui/Font;Lnet/minecraft/network/chat/FormattedText;IIIIZ)I
 	param 5 argb_color
 target_method net.minecraft.client.gui.GuiGraphicsExtractor textWithBackdrop (Lnet/minecraft/client/gui/Font;Lnet/minecraft/network/chat/Component;IIII)V
 	param 5 argb_color
@@ -174,9 +162,6 @@ target_method net.minecraft.client.gui.components.MultiLineEditBox$Builder setTe
 target_method net.minecraft.client.gui.components.MultiLineEditBox$Builder setCursorColor (I)Lnet/minecraft/client/gui/components/MultiLineEditBox$Builder;
 	param 0 argb_color
 
-target_method net.minecraft.client.gui.components.TabButton extractFocusUnderline (Lnet/minecraft/client/gui/GuiGraphicsExtractor;Lnet/minecraft/client/gui/Font;I)V
-	param 2 argb_color
-
 target_method net.minecraft.client.gui.components.TextCursorUtils extractInsertCursor (Lnet/minecraft/client/gui/GuiGraphicsExtractor;IIII)V
 	param 3 argb_color
 
@@ -185,11 +170,17 @@ target_method net.minecraft.client.gui.components.debugchart.AbstractDebugChart 
 	param 4 argb_color
 	param 6 argb_color
 
+target_method net.minecraft.client.gui.components.tabs.MenuTabBar$MenuTabButton renderFocusUnderline (Lnet/minecraft/client/gui/GuiGraphicsExtractor;Lnet/minecraft/client/gui/Font;I)V
+	param 2 argb_color
+
 target_method net.minecraft.client.gui.components.toasts.SystemToast extractTextLines (Lnet/minecraft/client/gui/GuiGraphicsExtractor;Lnet/minecraft/client/gui/Font;Ljava/util/List;II)V
 	param 4 argb_color
 
 target_method net.minecraft.client.gui.screens.advancements.AdvancementWidget extractMultilineText (Lnet/minecraft/client/gui/GuiGraphicsExtractor;Ljava/util/List;III)V
 	param 4 argb_color
+
+target_method net.minecraft.client.gui.screens.friends.FriendsOverlayTabButton renderFocusUnderline (Lnet/minecraft/client/gui/GuiGraphicsExtractor;Lnet/minecraft/client/gui/Font;I)V
+	param 2 argb_color
 
 target_method net.minecraft.client.particle.SquidInkParticle <init> (Lnet/minecraft/client/multiplayer/ClientLevel;DDDDDDILnet/minecraft/client/particle/SpriteSet;)V
 	param 7 argb_color
@@ -197,22 +188,29 @@ target_method net.minecraft.client.particle.SquidInkParticle <init> (Lnet/minecr
 target_method net.minecraft.client.renderer.LevelRenderer submitHitOutline (Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;Lnet/minecraft/client/renderer/rendertype/RenderType;Lnet/minecraft/client/renderer/state/level/BlockOutlineRenderState;IFZ)V
 	param 4 argb_color
 
-target_method net.minecraft.client.renderer.OrderedSubmitNodeCollector submitModel (Lnet/minecraft/client/model/Model;Ljava/lang/Object;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/rendertype/RenderType;IIILnet/minecraft/client/renderer/texture/TextureAtlasSprite;ILnet/minecraft/client/renderer/feature/ModelFeatureRenderer$CrumblingOverlay;)V
+target_method net.minecraft.client.renderer.OrderedSubmitNodeCollector submitModel (Lnet/minecraft/client/model/Model;Ljava/lang/Object;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/rendertype/RenderType;IIILnet/minecraft/client/renderer/texture/UvMapping;I)V
 	param 8 argb_color
-target_method net.minecraft.client.renderer.OrderedSubmitNodeCollector submitModel (Lnet/minecraft/client/model/Model;Ljava/lang/Object;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/rendertype/RenderType;IIILnet/minecraft/client/renderer/texture/TextureAtlasSprite;ILnet/minecraft/client/renderer/feature/ModelFeatureRenderer$CrumblingOverlay;)V
+target_method net.minecraft.client.renderer.OrderedSubmitNodeCollector submitModel (Lnet/minecraft/client/model/Model;Ljava/lang/Object;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/rendertype/RenderType;IIILnet/minecraft/client/renderer/texture/UvMapping;I)V
 	param 6 argb_color
-target_method net.minecraft.client.renderer.OrderedSubmitNodeCollector submitModel (Lnet/minecraft/client/model/Model;Ljava/lang/Object;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/resources/Identifier;IIILnet/minecraft/client/renderer/feature/ModelFeatureRenderer$CrumblingOverlay;)V
+target_method net.minecraft.client.renderer.OrderedSubmitNodeCollector submitModel (Lnet/minecraft/client/model/Model;Ljava/lang/Object;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/resources/Identifier;III)V
 	param 6 argb_color
-target_method net.minecraft.client.renderer.OrderedSubmitNodeCollector submitModel (Lnet/minecraft/client/model/Model;Ljava/lang/Object;Lcom/mojang/blaze3d/vertex/PoseStack;IIILnet/minecraft/client/resources/model/sprite/SpriteId;Lnet/minecraft/client/resources/model/sprite/SpriteGetter;ILnet/minecraft/client/renderer/feature/ModelFeatureRenderer$CrumblingOverlay;)V
+target_method net.minecraft.client.renderer.OrderedSubmitNodeCollector submitModel (Lnet/minecraft/client/model/Model;Ljava/lang/Object;Lcom/mojang/blaze3d/vertex/PoseStack;IIILnet/minecraft/client/resources/model/sprite/SpriteId;Lnet/minecraft/client/resources/model/sprite/SpriteGetter;I)V
 	param 5 argb_color
 	param 8 argb_color
-target_method net.minecraft.client.renderer.OrderedSubmitNodeCollector submitModelPart (Lnet/minecraft/client/model/geom/ModelPart;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/rendertype/RenderType;IILnet/minecraft/client/renderer/texture/TextureAtlasSprite;ILnet/minecraft/client/renderer/feature/ModelFeatureRenderer$CrumblingOverlay;)V
-	param 6	argb_color
-target_method net.minecraft.client.renderer.OrderedSubmitNodeCollector submitModelPart (Lnet/minecraft/client/model/geom/ModelPart;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/rendertype/RenderType;IILnet/minecraft/client/renderer/texture/TextureAtlasSprite;ILnet/minecraft/client/renderer/feature/ModelFeatureRenderer$CrumblingOverlay;I)V
+target_method net.minecraft.client.renderer.OrderedSubmitNodeCollector submitCrumblingOverlay (Lnet/minecraft/client/model/Model;Ljava/lang/Object;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/rendertype/RenderType;IIILnet/minecraft/client/renderer/feature/ModelFeatureRenderer$CrumblingOverlay;)V
 	param 6 argb_color
-	param 8 argb_color
+target_method net.minecraft.client.renderer.OrderedSubmitNodeCollector submitCrumblingOverlay (Lnet/minecraft/client/model/geom/ModelPart;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/rendertype/RenderType;IIILnet/minecraft/client/renderer/feature/ModelFeatureRenderer$CrumblingOverlay;)V
+	param 5 argb_color
+target_method net.minecraft.client.renderer.OrderedSubmitNodeCollector submitModelPart (Lnet/minecraft/client/model/geom/ModelPart;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/rendertype/RenderType;IILnet/minecraft/client/renderer/texture/UvMapping;I)V
+	param 6	argb_color
+target_method net.minecraft.client.renderer.OrderedSubmitNodeCollector submitModelPart (Lnet/minecraft/client/model/geom/ModelPart;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/rendertype/RenderType;IILnet/minecraft/client/renderer/texture/UvMapping;II)V
+	param 6 argb_color
+	param 7 argb_color
 target_method net.minecraft.client.renderer.OrderedSubmitNodeCollector submitShapeOutline (Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/client/renderer/rendertype/RenderType;IFZ)V
 	param 3 argb_color
+
+target_method net.minecraft.client.renderer.SubmitNodeCollection nameTag (Lorg/joml/Matrix4f;FFLnet/minecraft/util/FormattedCharSequence;IIILnet/minecraft/client/gui/Font$DisplayMode;)Lnet/minecraft/client/renderer/feature/TextFeatureRenderer$Submit;
+	param 5 argb_color
 
 target_method net.minecraft.client.renderer.debug.BeeDebugRenderer renderTextOverHive (Ljava/lang/String;Lnet/minecraft/core/BlockPos;II)V
 	param 3 argb_color
@@ -235,15 +233,12 @@ target_method net.minecraft.client.renderer.entity.DragonFireballRenderer buildQ
 target_method net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer getColorForLayer (Lnet/minecraft/client/resources/model/EquipmentClientInfo$Layer;I)I
 	return argb_color
 
-target_method net.minecraft.client.renderer.state.gui.BlitRenderState <init> (Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/client/gui/render/TextureSetup;Lorg/joml/Matrix3x2fc;IIIIFFFFILnet/minecraft/client/gui/navigation/ScreenRectangle;Lnet/minecraft/client/gui/navigation/ScreenRectangle;)V
+target_method net.minecraft.client.renderer.state.gui.BlitRenderState <init> (Lcom/mojang/renderpearl/api/pipeline/RenderPipeline;Lnet/minecraft/client/gui/render/TextureSetup;Lorg/joml/Matrix3x2fc;IIIIFFFFILnet/minecraft/client/gui/navigation/ScreenRectangle;Lnet/minecraft/client/gui/navigation/ScreenRectangle;)V
 	param 11 argb_color
 
-target_method net.minecraft.client.renderer.state.gui.ColoredRectangleRenderState <init> (Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/client/gui/render/TextureSetup;Lorg/joml/Matrix3x2fc;IIIIIILnet/minecraft/client/gui/navigation/ScreenRectangle;)V
+target_method net.minecraft.client.renderer.state.gui.ColoredRectangleRenderState <init> (Lcom/mojang/renderpearl/api/pipeline/RenderPipeline;Lnet/minecraft/client/gui/render/TextureSetup;Lorg/joml/Matrix3x2fc;IIIIIILnet/minecraft/client/gui/navigation/ScreenRectangle;)V
 	param 7 argb_color
 	param 8 argb_color
-
-target_method net.minecraft.client.renderer.feature.NameTagFeatureRenderer$Submit <init> (Lorg/joml/Matrix4fc;FFLnet/minecraft/network/chat/Component;IIILnet/minecraft/client/gui/Font$DisplayMode;)V
-	param 5 argb_color
 
 target_method net.minecraft.client.renderer.feature.BlockModelFeatureRenderer$Submit <init> (Lcom/mojang/blaze3d/vertex/PoseStack$Pose;Lnet/minecraft/client/renderer/rendertype/RenderType;Ljava/util/List;[IIIILcom/mojang/blaze3d/vertex/PoseStack$Pose;)V
 	param 6 argb_color
@@ -307,11 +302,6 @@ target_method net.minecraft.world.entity.projectile.arrow.Arrow getColor ()I
 target_method net.minecraft.world.item.alchemy.PotionContents getColorOr (I)I
 	param 0 argb_color
 
-target_field net.minecraft.world.level.saveddata.maps.MapDecorationType mapColor I argb_color
-
-target_method net.minecraft.world.level.saveddata.maps.MapDecorationTypes register (Ljava/lang/String;Ljava/lang/String;ZIZZ)Lnet/minecraft/core/Holder;
-	param 3 argb_color
-
 target_method net.minecraft.world.level.ColorMapColorUtil get (DD[II)I
 	param 3 argb_color
 
@@ -329,6 +319,8 @@ target_method net.minecraft.util.ARGB color (II)I
 target_method net.minecraft.util.ARGB color (FI)I
 	param 1 argb_color
 	return argb_color
+target_method net.minecraft.util.ARGB vector3fFromRGB24 (I)Lorg/joml/Vector3f;
+	param 0 argb_color
 target_method net.minecraft.util.ARGB vector4fFromARGB32 (I)Lorg/joml/Vector4f;
 	param 0 argb_color
 
