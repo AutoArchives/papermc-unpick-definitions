@@ -6,3 +6,5 @@ These definitions are applied by [codebook](https://github.com/PaperMC/codebook)
 
 This is based on the definitions provided by [yarn](https://github.com/FabricMC/yarn/tree/1.21.11/unpick-definitions) no
 longer maintained for newer versions.
+
+<img src="https://papermc.io/assets/misc/namespace-oss-badge.svg?project=unpick-definitions" alt="CI powered by namespace badge" />
